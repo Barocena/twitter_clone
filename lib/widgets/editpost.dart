@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 
 class InputDialog extends StatefulWidget {
@@ -29,13 +31,13 @@ class _InputDialogState extends State<InputDialog> {
       ),
       actions: [
         TextButton(
-          child: Text('CANCEL'),
+          child: const Text('CANCEL'),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
         TextButton(
-          child: Text('OK'),
+          child: const Text('OK'),
           onPressed: () {
             widget.onOkPressed(_textController.text);
             Navigator.of(context).pop();

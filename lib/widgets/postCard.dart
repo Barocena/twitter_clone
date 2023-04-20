@@ -1,11 +1,8 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: library_private_types_in_public_api, must_be_immutable, depend_on_referenced_packages, file_names
 
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:intl/intl.dart' show DateFormat;
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:twitter_clone/widgets/bottomNavBar.dart';
-import 'dart:developer';
-import 'package:twitter_clone/widgets/editpost.dart';
 
 class TwitterPostCard extends StatefulWidget {
   final String image;
@@ -73,7 +70,7 @@ class _TwitterPostCardState extends State<TwitterPostCard> {
                 ])),
             subtitle: Text(
               formatter.format(widget.time),
-              style: TextStyle(fontSize: 10),
+              style: const TextStyle(fontSize: 10),
             ),
             trailing: PopupMenuButton(
               itemBuilder: (BuildContext context) {
@@ -93,11 +90,9 @@ class _TwitterPostCardState extends State<TwitterPostCard> {
               onSelected: (String value) {
                 if (value == 'edit') {
                   if (widget.onEditPressed != null) {
-                    //widget.onEditPressed!();
-
-                    TextEditingController _textEditingController =
+                    TextEditingController textEditingController =
                         TextEditingController();
-                    _textEditingController.text = widget.text;
+                    textEditingController.text = widget.text;
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
@@ -108,7 +103,7 @@ class _TwitterPostCardState extends State<TwitterPostCard> {
                             children: [
                               TextField(
                                 autofocus: true,
-                                controller: _textEditingController,
+                                controller: textEditingController,
                                 decoration: const InputDecoration(
                                   hintText: "write your new tweet here",
                                 ),
@@ -116,13 +111,12 @@ class _TwitterPostCardState extends State<TwitterPostCard> {
                               const SizedBox(height: 10),
                               ElevatedButton(
                                 onPressed: () {
-                                  // Perform action when button is pressed
                                   setState(() {
-                                    widget.text = _textEditingController.text;
+                                    widget.text = textEditingController.text;
                                   });
 
                                   widget.onEditPressed!(
-                                      _textEditingController.text);
+                                      textEditingController.text);
                                   Navigator.pop(context);
                                 },
                                 child: const Text("Edit"),

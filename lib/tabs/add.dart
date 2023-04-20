@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:twitter_clone/widgets/bottomNavBar.dart';
+import 'package:twitter_clone/widgets/bottom_NavBar.dart';
 
 class Add extends StatefulWidget {
   const Add({Key? key}) : super(key: key);
@@ -23,7 +23,6 @@ class _AddState extends State<Add> {
           IconButton(
             icon: Icon(LucideIcons.send),
             onPressed: () {
-              // Send tweet functionality here
               tweets.add(Tweet(
                 username: 'Barocena',
                 handle: '@Barocena_',

@@ -1,11 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:lucide_icons/lucide_icons.dart';
-import 'package:twitter_clone/widgets/editpost.dart';
 import 'package:twitter_clone/widgets/postCard.dart';
-import 'package:intl/intl.dart';
-import 'package:twitter_clone/widgets/bottomNavBar.dart';
+import 'package:twitter_clone/widgets/bottom_NavBar.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
